@@ -1,0 +1,17 @@
+﻿<Window x:Class="Buzueva_Ekzamen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Buzueva_Ekzamen"
+        mc:Ignorable="d"
+        Title="Аллея книг" Height="500" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="195*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Аллея книг" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="39" FontFamily="Sylfaen" FontWeight="Bold"/>
+        <Frame Grid.Row="2" NavigationUIVisibility="Hidden" x:Name="ChangePage"/>
+    </Grid>
+</Window>
