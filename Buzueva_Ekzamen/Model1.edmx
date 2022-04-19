@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище P_Buzueva_EkzModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthorName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BooksCatalog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Genre" Type="int" />
+          <Property Name="Writer" Type="int" />
+          <Property Name="NumberMagazine" Type="int" />
+          <Property Name="NumberStok" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="700" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenderName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_BooksCatalog_Authors">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+          <End Role="BooksCatalog" Type="Self.BooksCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BooksCatalog">
+              <PropertyRef Name="Writer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BooksCatalog_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+          <End Role="BooksCatalog" Type="Self.BooksCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BooksCatalog">
+              <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище P_Buzueva_EkzModelContainer">
+          <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BooksCatalog" EntityType="Self.BooksCatalog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BooksCatalog_Authors" Association="Self.FK_BooksCatalog_Authors">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="BooksCatalog" EntitySet="BooksCatalog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BooksCatalog_Genre" Association="Self.FK_BooksCatalog_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="BooksCatalog" EntitySet="BooksCatalog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="P_Buzueva_EkzModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BooksCatalog" Relationship="Self.FK_BooksCatalog_Authors" FromRole="Authors" ToRole="BooksCatalog" />
+        </EntityType>
+        <EntityType Name="BooksCatalog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Genre" Type="Int32" />
+          <Property Name="Writer" Type="Int32" />
+          <Property Name="NumberMagazine" Type="Int32" />
+          <Property Name="NumberStok" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="700" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="Authors" Relationship="Self.FK_BooksCatalog_Authors" FromRole="BooksCatalog" ToRole="Authors" />
+          <NavigationProperty Name="Genre1" Relationship="Self.FK_BooksCatalog_Genre" FromRole="BooksCatalog" ToRole="Genre" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BooksCatalog" Relationship="Self.FK_BooksCatalog_Genre" FromRole="Genre" ToRole="BooksCatalog" />
+        </EntityType>
+        <Association Name="FK_BooksCatalog_Authors">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+          <End Role="BooksCatalog" Type="Self.BooksCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BooksCatalog">
+              <PropertyRef Name="Writer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BooksCatalog_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+          <End Role="BooksCatalog" Type="Self.BooksCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BooksCatalog">
+              <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authors" EntityType="Self.Authors" />
+          <EntitySet Name="BooksCatalog" EntityType="Self.BooksCatalog" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" />
+          <AssociationSet Name="FK_BooksCatalog_Authors" Association="Self.FK_BooksCatalog_Authors">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="BooksCatalog" EntitySet="BooksCatalog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BooksCatalog_Genre" Association="Self.FK_BooksCatalog_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="BooksCatalog" EntitySet="BooksCatalog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище P_Buzueva_EkzModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="P_Buzueva_EkzModel.Authors">
+              <MappingFragment StoreEntitySet="Authors">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BooksCatalog">
+            <EntityTypeMapping TypeName="P_Buzueva_EkzModel.BooksCatalog">
+              <MappingFragment StoreEntitySet="BooksCatalog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Titile" ColumnName="Titile" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Writer" ColumnName="Writer" />
+                <ScalarProperty Name="NumberMagazine" ColumnName="NumberMagazine" />
+                <ScalarProperty Name="NumberStok" ColumnName="NumberStok" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genre">
+            <EntityTypeMapping TypeName="P_Buzueva_EkzModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

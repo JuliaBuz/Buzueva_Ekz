@@ -12,21 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Buzueva_Ekzamen.Classes;
-using Buzueva_Ekzamen.Pages;
 
-namespace Buzueva_Ekzamen
+namespace Buzueva_Ekzamen.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Catalog.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Catalog : Page
     {
-        public MainWindow()
+        public Catalog()
         {
             InitializeComponent();
-            ChangePage.Navigate(new Catalog());
-            PagesChange.switchPage = ChangePage;
         }
     }
 }
