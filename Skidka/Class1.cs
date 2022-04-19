@@ -8,20 +8,20 @@ namespace Skidka
 {
     public class Class1
     {
-        public int sale(int kol, int prise)
+        public int sale(int count, int prise)
         {
             int sale = 0;
-            if (kol > 2)
+            if (count > 2)
             {
                 sale = 5;
                 sale = sale + (prise / 500);
             }
-            if (kol > 4)
+            if (count > 4)
             {
                 sale = 10;
                 sale = sale + (prise / 500);
             }
-            if (kol > 9)
+            if (count > 9)
             {
                 sale = 15;
                 sale = sale + (prise / 500);

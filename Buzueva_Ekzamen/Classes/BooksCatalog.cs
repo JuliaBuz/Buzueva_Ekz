@@ -14,7 +14,7 @@ namespace Buzueva_Ekzamen
 
         private string writer;
 
-        public string AuthorName
+        public string NameAuthor
         {
             get { return writer; }
             set { writer = value; }

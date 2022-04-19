@@ -35,7 +35,7 @@ namespace Buzueva_Ekzamen
                 buff.Price = book.Price;
 
                 Authors authors = DataBase.BaseModel.Authors.FirstOrDefault(x => x.ID == book.Writer);
-                buff.AuthorName = authors.AuthorName;
+                buff.NameAuthor = authors.AuthorName;
 
                 Genre genre = DataBase.BaseModel.Genre.FirstOrDefault(x => x.ID == book.Genre);
                 buff.GenreName = genre.GenderName;

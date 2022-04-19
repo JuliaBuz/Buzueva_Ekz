@@ -90,6 +90,7 @@
           <EntitySet Name="Authors" EntityType="P_Buzueva_EkzModel.Authors" />
           <EntitySet Name="BooksCatalog" EntityType="P_Buzueva_EkzModel.BooksCatalog" />
           <EntitySet Name="Genre" EntityType="P_Buzueva_EkzModel.Genre" />
+          <EntitySet Name="Zakaz" EntityType="P_Buzueva_EkzModel.Zakaz" />
           <AssociationSet Name="FK_BooksCatalog_Authors" Association="P_Buzueva_EkzModel.FK_BooksCatalog_Authors">
             <End Role="Authors" EntitySet="Authors" />
             <End Role="BooksCatalog" EntitySet="BooksCatalog" />
@@ -98,7 +99,6 @@
             <End Role="Genre" EntitySet="Genre" />
             <End Role="BooksCatalog" EntitySet="BooksCatalog" />
           </AssociationSet>
-          <EntitySet Name="Zakaz" EntityType="P_Buzueva_EkzModel.Zakaz" />
         </EntityContainer>
         <EntityType Name="Authors">
           <Key>
@@ -132,6 +132,17 @@
           <Property Name="GenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BooksCatalog" Relationship="P_Buzueva_EkzModel.FK_BooksCatalog_Genre" FromRole="Genre" ToRole="BooksCatalog" />
         </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="Sale" Type="Int32" />
+          <Property Name="Reserv" Type="DateTime" Precision="3" />
+        </EntityType>
         <Association Name="FK_BooksCatalog_Authors">
           <End Type="P_Buzueva_EkzModel.Authors" Role="Authors" Multiplicity="0..1" />
           <End Type="P_Buzueva_EkzModel.BooksCatalog" Role="BooksCatalog" Multiplicity="*" />
@@ -156,17 +167,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Zakaz">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Count" Type="Int32" />
-          <Property Name="TotalPrice" Type="Decimal" Precision="13" Scale="0" />
-          <Property Name="Sale" Type="Int32" />
-          <Property Name="Reserv" Type="DateTime" Precision="3" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

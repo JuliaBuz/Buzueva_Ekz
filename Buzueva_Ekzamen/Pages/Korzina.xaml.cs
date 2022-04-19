@@ -22,8 +22,7 @@ namespace Buzueva_Ekzamen.Pages
     public partial class Korzina : Page
     {
         List<BooksCatalog> bo = new List<BooksCatalog>();
-        int Sale;
-        int c = 0, tc = 0, itogc = 0, itogtc = 0;
+        int Sale, x = 0, tc = 0, itogc = 0, itogtc = 0;
         public Korzina(List<BooksCatalog> books, int sale)
         {
             InitializeComponent();
@@ -72,9 +71,9 @@ namespace Buzueva_Ekzamen.Pages
             DateTime today = DateTime.Now;
             foreach (BooksCatalog b in bo)
             {
-                c = b.CountInCart;
+                x = b.CountInCart;
                 tc = Convert.ToInt32(b.TotalPriseZakWithSale);
-                itogc += c;
+                itogc += x;
                 itogtc += tc;
             }
             Zakaz zakaz = new Zakaz()
