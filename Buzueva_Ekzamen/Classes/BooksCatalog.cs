@@ -8,6 +8,10 @@ namespace Buzueva_Ekzamen
 {
     public partial class BooksCatalog
     {
+        public int CountInCart { get; set; } = 0;
+        public decimal TotalPriseZak { get; set; } = 0;
+        public decimal TotalPriseZakWithSale { get; set; } = 0;
+
         private string writer;
 
         public string AuthorName
@@ -39,12 +43,9 @@ namespace Buzueva_Ekzamen
             set { countStore = value; }
         }
 
-
-        public int CountInCart { get; set; } = 0;
         public string Visible { get; set; }
         public string Visible2 { get; set; }
-        public decimal TotalPriseZak { get; set; } = 0;
-        public decimal TotalPriseZakWithSale { get; set; } = 0;
+        
         public string decor { get; set; } = "None";
     }
 }

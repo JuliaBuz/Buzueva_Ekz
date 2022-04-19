@@ -41,7 +41,7 @@
                             <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Width="1000" />
                         </StackPanel>
                     </StackPanel>
-                    <Button x:Name="add" Content="Добавить в корзину" Click="add_Click" Uid="{Binding ID}" Foreground="Black" Padding="5" Margin="5" VerticalAlignment="Center" />
+                    <Button x:Name="add" Content="Добавить в корзину" Click="Add" Uid="{Binding ID}" Foreground="Black" Padding="5" Margin="5" VerticalAlignment="Center" />
                 </StackPanel>
             </Border>
         </DataTemplate>

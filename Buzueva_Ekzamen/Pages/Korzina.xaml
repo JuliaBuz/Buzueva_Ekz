@@ -17,7 +17,7 @@
                             <TextBlock Text="Название: "/>
                             <TextBlock Text="{Binding Titile}"/>
                             <TextBlock Text=" | Жанр: "/>
-                            <TextBlock Text="{Binding Genre.GenderName}"/>
+                            <TextBlock Text="{Binding Genre.GenreName}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Автор: "/>
@@ -30,9 +30,9 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Количество: "/>
-                            <Button x:Name="plus" Content="+" Click="plus_Click" Margin="3"/>
+                            <Button x:Name="plus" Content="+" Click="Plus" Margin="1"/>
                             <TextBlock Text="{Binding CountInCart}"/>
-                            <Button x:Name="minus" Content="-" Click="minus_Click" Margin="3"/>
+                            <Button x:Name="minus" Content="-" Click="Minus" Margin="1"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Цена: "/>
@@ -58,6 +58,6 @@
             <Button Content="Очистить корзину"  Click="AllDelit" Margin="3"/>
         </StackPanel>
         <ListBox x:Name="ListZak" ItemTemplate="{StaticResource ListBooks}" Grid.Row="1"/>
-        <Button Content="На главную" Click="Back" Grid.Row="2"/>
+        <Button Content="Назад" Click="Back" Grid.Row="2"/>
     </Grid>
 </Page>

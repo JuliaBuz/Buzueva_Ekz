@@ -19,13 +19,11 @@ namespace Buzueva_Ekzamen.Pages
     /// <summary>
     /// Логика взаимодействия для Korzina.xaml
     /// </summary>
-    public partial class Korzina : Page, INotifyPropertyChanged
+    public partial class Korzina : Page
     {
         List<BooksCatalog> bo = new List<BooksCatalog>();
-        public event PropertyChangedEventHandler PropertyChanged;
         int Sale;
-        Otobrazhenie ViewModel = new Otobrazhenie();
-        int c = 0, tc = 0, itogc = 0, itogtc = 0; bool d = true;
+        int c = 0, tc = 0, itogc = 0, itogtc = 0;
         public Korzina(List<BooksCatalog> books, int sale)
         {
             InitializeComponent();
@@ -97,7 +95,7 @@ namespace Buzueva_Ekzamen.Pages
             "\n Конец срока резервирования продукции:" + today.AddDays(7).ToString() + "\n Цена заказа со скидкой:" + itogtc.ToString() + "\n Процент скидки:" + Sale.ToString() +
             "\n Итоговое количество:" + itogc.ToString());
         }
-        private void plus_Click(object sender, RoutedEventArgs e)
+        private void Plus(object sender, RoutedEventArgs e)
         {
             foreach (BooksCatalog b in bo)
             {
@@ -117,7 +115,7 @@ namespace Buzueva_Ekzamen.Pages
             ListZak.Items.Refresh();
         }
 
-        private void minus_Click(object sender, RoutedEventArgs e)
+        private void Minus(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -158,6 +156,6 @@ namespace Buzueva_Ekzamen.Pages
             }
         }
 
-        
+
     }
 }

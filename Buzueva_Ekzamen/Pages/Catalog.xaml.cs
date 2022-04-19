@@ -37,7 +37,7 @@ namespace Buzueva_Ekzamen.Pages
             skid = "None";
         }
 
-        private void add_Click(object sender, RoutedEventArgs e)
+        private void Add(object sender, RoutedEventArgs e)
         {
 
             try
