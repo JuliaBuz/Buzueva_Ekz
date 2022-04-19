@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Buzueva_Ekzamen.Classes;
 using Buzueva_Ekzamen.Pages;
 
 namespace Buzueva_Ekzamen

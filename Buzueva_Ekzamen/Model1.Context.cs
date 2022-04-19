@@ -26,7 +26,7 @@ namespace Buzueva_Ekzamen
         }
     
         public virtual DbSet<Authors> Authors { get; set; }
-        public virtual DbSet<BooksCatalog> BooksCatalog { get; set; }
         public virtual DbSet<Genre> Genre { get; set; }
+        public virtual DbSet<BooksCatalog> BooksCatalog { get; set; }
     }
 }

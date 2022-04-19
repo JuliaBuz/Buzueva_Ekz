@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Buzueva_Ekzamen.Classes
+namespace Buzueva_Ekzamen
 {
     class PagesChange
     {

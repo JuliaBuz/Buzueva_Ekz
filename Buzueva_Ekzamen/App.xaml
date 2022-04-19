@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:Buzueva_Ekzamen"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="Background" Value="#FFFF7604"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+        </Style>
     </Application.Resources>
 </Application>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Buzueva_Ekzamen.Classes
+namespace Buzueva_Ekzamen
 {
     class DataBase
     {

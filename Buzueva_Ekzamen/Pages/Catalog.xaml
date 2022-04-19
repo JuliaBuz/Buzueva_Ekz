@@ -7,8 +7,73 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Catalog">
-
+    <Page.Resources>
+        <DataTemplate x:Key="Allbooks">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <StackPanel Uid="{Binding ID}" Orientation="Horizontal">
+                    <Image Height="100" Width="100" Source="{Binding Image}"/>
+                    <StackPanel Orientation="Vertical" Width="1100" >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Название: "/>
+                            <TextBlock Text="{Binding Titile}"/>
+                            <TextBlock Text=" | Жанр: "/>
+                            <TextBlock Text="{Binding GenreName}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Автор: "/>
+                            <TextBlock Text="{Binding AuthorName}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Цена: "/>
+                            <TextBlock Text="{Binding Price}" />
+                            <TextBlock Text=" руб."/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Количество в магазине: "/>
+                            <TextBlock Text="{Binding Store}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Количество на складе: "/>
+                            <TextBlock Text="{Binding Stock}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Описание: "/>
+                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Width="1000" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Button x:Name="add" Content="Добавить в корзину" Click="add_Click" Uid="{Binding ID}" Foreground="Black" Padding="5" Margin="5" VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="127*"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="Allbooks"  Grid.Row="1" ItemTemplate="{StaticResource Allbooks}"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Border HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="1" >
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Количество выбранных книг: "></TextBlock>
+                        <TextBlock x:Name="shtuk"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Стоимость покупки: "/>
+                        <TextBlock x:Name="price" TextDecorations="{Binding op}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock x:Name="newprice" Visibility="Hidden"/>
+                        <TextBlock Text=" руб."/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Размер скидки: "></TextBlock>
+                        <TextBlock x:Name="sale"/>
+                        <TextBlock Text="%"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Button Content="Посмотреть содержание корзины"  Click="PerexKorzin" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Page>

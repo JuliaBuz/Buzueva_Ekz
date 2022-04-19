@@ -78,6 +78,7 @@
     <Compile Include="BooksCatalog.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\BooksCatalog.cs" />
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\Otobrazhenie.cs" />
     <Compile Include="Classes\PagesChange.cs" />
@@ -145,8 +146,24 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Skidka\Skidka.csproj">
+      <Project>{4bc37bb1-687b-4e67-8a13-b4da7b79223b}</Project>
+      <Name>Skidka</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Covers\Долгая прогулка.jpg" />
+    <Resource Include="Covers\Король шрамов.jpg" />
+    <Resource Include="Covers\Красношейка.jpg" />
+    <Resource Include="Covers\Крещение огнем.jpg" />
+    <Resource Include="Covers\Мизери.jpg" />
+    <Resource Include="Covers\Повелитель мух.jpg" />
+    <Resource Include="Covers\Ритуал.jpg" />
+    <Resource Include="Covers\Странствия убийцы.jpg" />
+    <Resource Include="Covers\Творец заклинаний.jpg" />
+    <Resource Include="Covers\Финист - ясный сокол.jpg" />
+    <Resource Include="Covers\Цветы для Элджернона.jpg" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
