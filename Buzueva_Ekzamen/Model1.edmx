@@ -33,6 +33,17 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GenderName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Count" Type="int" />
+          <Property Name="TotalPrice" Type="decimal" Precision="13" Scale="0" />
+          <Property Name="Sale" Type="int" />
+          <Property Name="Reserv" Type="datetime" />
+        </EntityType>
         <Association Name="FK_BooksCatalog_Authors">
           <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
           <End Role="BooksCatalog" Type="Self.BooksCatalog" Multiplicity="*" />
@@ -61,6 +72,7 @@
           <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BooksCatalog" EntityType="Self.BooksCatalog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BooksCatalog_Authors" Association="Self.FK_BooksCatalog_Authors">
             <End Role="Authors" EntitySet="Authors" />
             <End Role="BooksCatalog" EntitySet="BooksCatalog" />
@@ -74,26 +86,10 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="P_Buzueva_EkzModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Authors">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BooksCatalog" Relationship="P_Buzueva_EkzModel.FK_BooksCatalog_Authors" FromRole="Authors" ToRole="BooksCatalog" />
-        </EntityType>
-        <EntityType Name="Genre">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BooksCatalog" Relationship="P_Buzueva_EkzModel.FK_BooksCatalog_Genre" FromRole="Genre" ToRole="BooksCatalog" />
-        </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Authors" EntityType="Self.Authors" />
-          <EntitySet Name="Genre" EntityType="Self.Genre" />
+          <EntitySet Name="Authors" EntityType="P_Buzueva_EkzModel.Authors" />
           <EntitySet Name="BooksCatalog" EntityType="P_Buzueva_EkzModel.BooksCatalog" />
+          <EntitySet Name="Genre" EntityType="P_Buzueva_EkzModel.Genre" />
           <AssociationSet Name="FK_BooksCatalog_Authors" Association="P_Buzueva_EkzModel.FK_BooksCatalog_Authors">
             <End Role="Authors" EntitySet="Authors" />
             <End Role="BooksCatalog" EntitySet="BooksCatalog" />
@@ -102,7 +98,16 @@
             <End Role="Genre" EntitySet="Genre" />
             <End Role="BooksCatalog" EntitySet="BooksCatalog" />
           </AssociationSet>
-          </EntityContainer>
+          <EntitySet Name="Zakaz" EntityType="P_Buzueva_EkzModel.Zakaz" />
+        </EntityContainer>
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BooksCatalog" Relationship="P_Buzueva_EkzModel.FK_BooksCatalog_Authors" FromRole="Authors" ToRole="BooksCatalog" />
+        </EntityType>
         <EntityType Name="BooksCatalog">
           <Key>
             <PropertyRef Name="ID" />
@@ -118,6 +123,14 @@
           <Property Name="Price" Type="Int32" />
           <NavigationProperty Name="Authors" Relationship="P_Buzueva_EkzModel.FK_BooksCatalog_Authors" FromRole="BooksCatalog" ToRole="Authors" />
           <NavigationProperty Name="Genre1" Relationship="P_Buzueva_EkzModel.FK_BooksCatalog_Genre" FromRole="BooksCatalog" ToRole="Genre" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BooksCatalog" Relationship="P_Buzueva_EkzModel.FK_BooksCatalog_Genre" FromRole="Genre" ToRole="BooksCatalog" />
         </EntityType>
         <Association Name="FK_BooksCatalog_Authors">
           <End Type="P_Buzueva_EkzModel.Authors" Role="Authors" Multiplicity="0..1" />
@@ -143,7 +156,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="Sale" Type="Int32" />
+          <Property Name="Reserv" Type="DateTime" Precision="3" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -152,16 +176,8 @@
           <EntitySetMapping Name="Authors">
             <EntityTypeMapping TypeName="P_Buzueva_EkzModel.Authors">
               <MappingFragment StoreEntitySet="Authors">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Genre">
-            <EntityTypeMapping TypeName="P_Buzueva_EkzModel.Genre">
-              <MappingFragment StoreEntitySet="Genre">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -176,6 +192,26 @@
                 <ScalarProperty Name="Writer" ColumnName="Writer" />
                 <ScalarProperty Name="Genre" ColumnName="Genre" />
                 <ScalarProperty Name="Titile" ColumnName="Titile" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genre">
+            <EntityTypeMapping TypeName="P_Buzueva_EkzModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zakaz">
+            <EntityTypeMapping TypeName="P_Buzueva_EkzModel.Zakaz">
+              <MappingFragment StoreEntitySet="Zakaz">
+                <ScalarProperty Name="Reserv" ColumnName="Reserv" />
+                <ScalarProperty Name="Sale" ColumnName="Sale" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

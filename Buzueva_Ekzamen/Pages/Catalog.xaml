@@ -56,14 +56,14 @@
             <Border HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="1" >
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Количество выбранных книг: "></TextBlock>
+                        <TextBlock Text="Количество выбранных книг: "/>
                         <TextBlock x:Name="shtuk"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Стоимость покупки: "/>
-                        <TextBlock x:Name="price" TextDecorations="{Binding op}"/>
+                        <TextBlock x:Name="price" TextDecorations="None"/>
                         <TextBlock Text=" "/>
-                        <TextBlock x:Name="newprice" Visibility="Hidden"/>
+                        <TextBlock x:Name="newprice" Visibility="Hidden" FontWeight="Bold" />
                         <TextBlock Text=" руб."/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">

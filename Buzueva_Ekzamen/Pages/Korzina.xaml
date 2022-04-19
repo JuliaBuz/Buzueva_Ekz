@@ -1,0 +1,63 @@
+﻿<Page x:Class="Buzueva_Ekzamen.Pages.Korzina"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Buzueva_Ekzamen.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Korzina">
+    <Page.Resources>
+        <DataTemplate x:Key="ListBooks">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <StackPanel Uid="{Binding ID}" Orientation="Horizontal">
+                    <Image Height="100" Width="100" Source="{Binding Image}"/>
+                    <StackPanel Orientation="Vertical" Width="1100">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Название: "/>
+                            <TextBlock Text="{Binding Titile}"/>
+                            <TextBlock Text=" | Жанр: "/>
+                            <TextBlock Text="{Binding Genre.GenderName}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Автор: "/>
+                            <TextBlock Text="{Binding Authors.AuthorName}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Visible}">
+                            <TextBlock Text="Цена: "/>
+                            <TextBlock Text="{Binding Cost, StringFormat=0}" />
+                            <TextBlock Text=" руб."/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Количество: "/>
+                            <Button x:Name="plus" Content="+" Click="plus_Click" Margin="3"/>
+                            <TextBlock Text="{Binding CountInCart}"/>
+                            <Button x:Name="minus" Content="-" Click="minus_Click" Margin="3"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Цена: "/>
+                            <TextBlock Text="{Binding TotalPriseZak}" TextDecorations="{Binding decor}" Visibility="{Binding Visible2}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding TotalPriseZakWithSale}"/>
+                            <TextBlock Text=" руб."/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button x:Name="delit" Content="Удалить из корзины" Click="Delit" Uid="{Binding ID}" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="397*"/>
+            <RowDefinition Height="23*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right">
+            <Button Content="Оформить заказ" Click="NewZakaz" Margin="3"/>
+            <Button Content="Очистить корзину"  Click="AllDelit" Margin="3"/>
+        </StackPanel>
+        <ListBox x:Name="ListZak" ItemTemplate="{StaticResource ListBooks}" Grid.Row="1"/>
+        <Button Content="На главную" Click="Back" Grid.Row="2"/>
+    </Grid>
+</Page>

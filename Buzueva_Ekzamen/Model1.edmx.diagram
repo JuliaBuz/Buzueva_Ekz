@@ -5,12 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="926095e6414a41aa962dbc9f48eb23ab" Name="Diagram1">
-        <EntityTypeShape EntityType="P_Buzueva_EkzModel.Authors" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="P_Buzueva_EkzModel.Genre" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="P_Buzueva_EkzModel.BooksCatalog" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="P_Buzueva_EkzModel.Authors" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="P_Buzueva_EkzModel.BooksCatalog" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="P_Buzueva_EkzModel.Genre" Width="1.5" PointX="0.75" PointY="5.75" />
         <AssociationConnector Association="P_Buzueva_EkzModel.FK_BooksCatalog_Authors" />
         <AssociationConnector Association="P_Buzueva_EkzModel.FK_BooksCatalog_Genre" />
-        </Diagram>
+        <EntityTypeShape EntityType="P_Buzueva_EkzModel.Zakaz" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
